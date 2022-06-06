@@ -25,17 +25,20 @@ namespace Blink.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Message(Messages msg)
+        [HttpPost]
+        public async Task<IActionResult> Index(Messages msg)
         {
             if (ModelState.IsValid)
             {
                 msg.Date = DateTime.Now;
                 await db.Messages.AddAsync(msg);
                 await db.SaveChangesAsync();
-                return View("Index","BlogSingle");
-            }
-            //
-            return Content("Not found");
+
+                News news = db.News.FirstOrDefault(x => x.Id == msg.NewsId);
+                return View(news);
+                //return RedirectToAction("Index", "BlogSingle");
         }
+            return Content("not found");
+     }
     }
 }

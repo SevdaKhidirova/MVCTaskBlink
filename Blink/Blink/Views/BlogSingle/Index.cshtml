@@ -34,7 +34,7 @@
 
                                     <ul class="meta-info">
                                         <li>
-                                            <a href="javascript:void(0)">@Model.Author</a>
+                                            <a href="">@Model.Author</a>
                                         </li>
                                         <li>
                                             <a href="javascript:void(0)">@Model.Date.ToString("dd MMM yyyy")</a>
@@ -169,7 +169,7 @@
 
                     <div class="comment-form">
                         <h3 class="comment-reply-title">Leave a comment</h3>
-                        <form action="/BlogSingle/index/@Model.Id" method="post" data-id="@Model.Id">
+                        <form action="/BlogSingle/index" method="post" >
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-box form-group">
@@ -177,9 +177,11 @@
                                        <textarea name="Comment" class="form-control form-control-custom" placeholder="Write your Comments"></textarea>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="form-box form-group">
                                         <label>Your name</label>
+                                        <input name="NewsId" value="@Model.Id" class="d-none" />
                                         <input type="text" name="SenderName" class="form-control form-control-custom" placeholder="Alex Deo" />
                                     </div>
                                 </div>
